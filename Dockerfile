@@ -1,6 +1,6 @@
 FROM debian:latest
 LABEL maintainer="michaelpellegrinimail@gmail.com"
-LABEL version="1.0"
+LABEL version="latest"
 ENV PATH /root/miniconda3/bin:$PATH
 RUN apt update; apt upgrade -y; apt install wget -y; mkdir /notebooks; \
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /root/miniconda.sh; \
