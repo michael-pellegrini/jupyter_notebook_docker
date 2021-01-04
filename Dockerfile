@@ -4,8 +4,7 @@ LABEL version="1.0"
 ENV PATH /root/miniconda3/bin:$PATH
 RUN apt update; apt upgrade -y; apt install wget -y; mkdir /notebooks; \
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /root/miniconda.sh; \
-bash /root/miniconda.sh -b; eval "$(/root/miniconda3/bin/conda shell.bash hook)"; \ 
-conda init; . /root/.bashrc; \ 
+bash /root/miniconda.sh -b; eval "$(/root/miniconda3/bin/conda shell.bash hook)"; conda init; . /root/.bashrc; \ 
 conda update conda -y; conda install -c conda-forge jupyterlab -y; conda clean --all -f -y; \ 
 rm /root/miniconda.sh; jupyter server --generate-config; cp /root/miniconda3/condabin/conda /usr/local/bin; \
 wget https://raw.githubusercontent.com/hm400/jupyterlab-docker-build/main/jupyter_server_config.json -O /root/.jupyter/jupyter_server_config.json; \
