@@ -12,6 +12,7 @@ openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -keyout /etc/ssl/certs/myce
 "/C=US/ST=Self/L=Self/O=Self/CN=www.example.com"
 VOLUME [ "/root/miniconda3/pkgs" ]
 VOLUME [ "/root/miniconda3/lib" ]
+VOLUME [ "/root/miniconda3" ]
 VOLUME [ "/root/.jupyter" ]
 VOLUME [ "/notebooks" ]
 ENTRYPOINT [ "jupyter-lab", "--ip='*'", "--allow-root", "--no-browser", "--certfile=/etc/ssl/certs/mycert.pem", "--notebook-dir=/notebooks" ]
