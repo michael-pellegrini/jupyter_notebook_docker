@@ -1,3 +1,5 @@
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/m400/jupyterlab?logo=docker&style=plastic)  ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/m400/jupyterlab?logo=docker&style=plastic)  ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/m400/jupyterlab?logo=docker&style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/m400/jupyterlab?logo=docker&style=plastic)  
+
 ## Jupyterlab Docker Image - For AMD64(x86-64)
 
 This container image is intended for a single user on private network.  
