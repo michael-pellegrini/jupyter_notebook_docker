@@ -16,3 +16,4 @@ volumes:
   config:
   pkgs:
   lib:
+  #miniconda3:
