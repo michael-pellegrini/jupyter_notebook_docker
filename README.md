@@ -1,10 +1,17 @@
 ## Jupyterlab Docker Image - For AMD64(x86-64)
 
+This container image is intended for a single user on private network.  
+
 The container image uses debian as base image with latest versions of miniconda3 and jupyterlab.
 
 The container image has a preconfigured password and an ssl certificate that is generated on build. 
 The password can easily be changed after starting the container.
 Additional python packages can be installed with the `conda` command in the jupyterlab terminal.
+
+
+`VOLUME /notebooks`            Volume is default folder in jupyterlab and is required to save work (.ipynb files etc..)
+
+`VOLUME /root/.jupyter`        Volume required to save user password change.
 
 `VOLUME /root/miniconda3/pkgs` Volume required to save user installed conda packages
 
@@ -12,9 +19,6 @@ Additional python packages can be installed with the `conda` command in the jupy
 
 `VOLUME /root/miniconda3`      Volume for entire miniconda package (Optional)
 
-`VOLUME /root/.jupyter`        Volume required to save user password change.
-
-`VOLUME /notebooks`            Volume is default folder in jupyterlab and is required to save work (.ipynb files etc..)
 
 ### Docker run example.
 #### Default password = admin
@@ -39,3 +43,26 @@ Verify password:
 `docker restart jupyter`
 
 Restart Web browser before logging in, if you logged in with default password.
+
+### Docker-compose example
+```
+version: '3.7'
+services:
+  application:
+    image: m400/jupyterlab
+    ports:
+    - 8888:8888
+    volumes:
+    - notebooks:/notebooks
+    - config:/root/.jupyter
+    - pkgs:/root/miniconda3/pkg
+    - lib:/root/miniconda3/lib
+    #- miniconda3:/root/miniconda3  #optional
+    restart: unless-stopped
+volumes:
+  notebooks:
+  config:
+  pkgs:
+  lib:
+```
+Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
