@@ -10,20 +10,16 @@ The container image has a preconfigured password and an ssl certificate that is 
 The password can easily be changed after starting the container.
 Additional python packages can be installed with the `conda` command in the jupyterlab terminal.
 
-
-`VOLUME /notebooks`            Volume is default folder in jupyterlab and is required to save work (.ipynb files etc..)
-
-`VOLUME /root/.jupyter`        Volume required to save user password change.
-
+```
+`VOLUME /notebooks`            Volume is default folder required for saved work to persist (.ipynb files etc..)
 `VOLUME /root/miniconda3/pkgs` Volume required to save user installed conda packages
+`VOLUME /root/miniconda3/lib`  Volume also required to save user installed conda packages.
+`VOLUME /root/.jupyter`        Volume required to save user password change.
+`VOLUME /root/miniconda3`      Volume for entire miniconda/jupyterlab installation. (Optional)
+```
 
-`VOLUME /root/miniconda3/lib`  Volume also required to save user installed conda packages. 
-
-`VOLUME /root/miniconda3`      Volume for entire miniconda package (Optional)
-
-
-### Docker run example.
-#### Default password = admin
+### Docker run command.
+##### Default password = admin
 
 `docker run -d -p 8888:8888 --name jupyter -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyter`
 
@@ -46,7 +42,7 @@ Verify password:
 
 Restart Web browser before logging in, if you logged in with default password.
 
-### Docker-compose example
+### Docker-compose.yml 
 ```
 version: '3.7'
 services:
@@ -68,3 +64,7 @@ volumes:
   lib:
 ```
 Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
+
+![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-182901.png)
+![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-183002.png)
+![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-183821.png)
