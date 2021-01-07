@@ -4,7 +4,7 @@
 
 This container image is intended for a single user on private network.  
 
-The container image uses debian as base image with latest versions of miniconda3 and jupyterlab.
+The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab.
 
 The container image has a preconfigured password and an ssl certificate that is generated on build. 
 The password can easily be changed after starting the container.
