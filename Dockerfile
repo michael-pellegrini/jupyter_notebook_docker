@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM ubuntu:20.04
 LABEL maintainer="michaelpellegrinimail@gmail.com"
 LABEL version="latest"
 ENV PATH /root/miniconda3/bin:$PATH
