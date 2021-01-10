@@ -1,13 +1,13 @@
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/m400/jupyterlab?logo=docker&style=plastic)  ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/m400/jupyterlab?logo=docker&style=plastic)  ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/m400/jupyterlab?logo=docker&style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/m400/jupyterlab?logo=docker&style=plastic)  
 
-## Jupyterlab Docker Image - For linux/AMD64
+## Jupyterlab Docker Image - linux/AMD64
 
 This container image is intended for a single user on private network.  
 
 The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab.
 
 The container image has a preconfigured password and an ssl certificate that is generated on build. 
-The password can easily be changed after starting the container.
+The password can easily be changed after starting the container and ssl can be disabled by passing empty variable `-e CERT=`
 Additional python packages can be installed with the `conda` command in the jupyterlab terminal.
 
 ```
@@ -17,12 +17,18 @@ VOLUME /root/miniconda3/lib  Volume also required to save user installed conda p
 VOLUME /root/.jupyter        Volume required to save user password change.
 ```
 
-### Docker run command.
+### Docker run command with SSL (default).
 ##### Default password = admin
 
 `docker run -d -p 8888:8888 --name jupyter -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
 
 Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
+
+### Docker run command without SSL.
+
+`docker run -d -p 8888:8888 --name jupyter -e CERT= -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
+
+Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin
 
 ### To change default password
 
@@ -47,6 +53,8 @@ version: '3.7'
 services:
   application:
     image: m400/jupyterlab
+    #environment:                   (uncomment to disable ssl)
+    #- CERT=
     ports:
     - 8888:8888
     volumes:
@@ -61,8 +69,11 @@ volumes:
   config:
   pkgs:
   lib:
+  #miniconda3                       (optional)
 ```
 Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
+
+If ssl disabled Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin`
 
 ![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-182901.png)
 ![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-183002.png)
