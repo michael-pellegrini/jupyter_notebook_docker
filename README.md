@@ -21,7 +21,7 @@ Additional python packages can be installed with the `conda` command in the jupy
 ### Docker run command.
 ##### Default password = admin
 
-`docker run -d -p 8888:8888 --name jupyter -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyter`
+`docker run -d -p 8888:8888 --name jupyter -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
 
 Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
 
