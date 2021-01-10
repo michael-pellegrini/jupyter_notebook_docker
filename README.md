@@ -11,11 +11,10 @@ The password can easily be changed after starting the container.
 Additional python packages can be installed with the `conda` command in the jupyterlab terminal.
 
 ```
-`VOLUME /notebooks`            Volume is default folder required for saved work to persist (.ipynb files etc..)
-`VOLUME /root/miniconda3/pkgs` Volume required to save user installed conda packages
-`VOLUME /root/miniconda3/lib`  Volume also required to save user installed conda packages.
-`VOLUME /root/.jupyter`        Volume required to save user password change.
-`VOLUME /root/miniconda3`      Volume for entire miniconda/jupyterlab installation. (Optional)
+VOLUME /notebooks            Volume is default folder required for saved work to persist (.ipynb files etc..)
+VOLUME /root/miniconda3/pkgs Volume required to save user installed conda packages
+VOLUME /root/miniconda3/lib  Volume also required to save user installed conda packages.
+VOLUME /root/.jupyter        Volume required to save user password change.
 ```
 
 ### Docker run command.
@@ -55,7 +54,7 @@ services:
     - config:/root/.jupyter
     - pkgs:/root/miniconda3/pkg
     - lib:/root/miniconda3/lib
-    #- miniconda3:/root/miniconda3  #optional
+    #- miniconda3:/root/miniconda3  (optional)
     restart: unless-stopped
 volumes:
   notebooks:
