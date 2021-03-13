@@ -4,7 +4,11 @@
 
 This container image is intended for a single user on private network.  
 
-`docker run -d -p 8888:8888 -e CERT='' m400/jupyterlab`  point browser to `127.0.0.1:8888` or `ipaddress:8888`  default password `admin`
+`docker run -d -p 8888:8888 -e CERT='' m400/jupyterlab`  
+point browser to `127.0.0.1:8888` or `ipaddress:8888`  default password `admin` 
+
+Any issues clear cache restart browser or user private window 
+
 
 The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab. Jupyterlab is the latest edition of Jupyter Notebook.
 See https://jupyterlab.readthedocs.io/en/stable/
@@ -26,6 +30,7 @@ VOLUME /root/.jupyter        Volume required to save user password change.
 `docker run -d -p 8888:8888 --name jupyter -e CERT='' -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
 
 Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin`
+
 
 ### Docker run command with SSL (default).
 ##### Default password = admin
