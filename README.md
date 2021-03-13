@@ -57,7 +57,7 @@ services:
   application:
     image: m400/jupyterlab
     #environment:                   (uncomment to disable ssl)
-    #- CERT=
+    #- CERT=""
     ports:
     - 8888:8888
     volumes:
@@ -65,7 +65,7 @@ services:
     - config:/root/.jupyter
     - pkgs:/root/miniconda3/pkg
     - lib:/root/miniconda3/lib
-    #- miniconda3:/root/miniconda3  (optional)
+    #- miniconda3:/root/miniconda3  (optional) maps entire installation to volume
     restart: unless-stopped
 volumes:
   notebooks:
