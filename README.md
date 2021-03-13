@@ -7,6 +7,7 @@ This container image is intended for a single user on private network.
 `docker run -d -p 8888:8888 m400/jupyterlab`
 
 The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab. Jupyterlab is the latest edition of Jupyter Notebook.
+See https://jupyterlab.readthedocs.io/en/stable/
 
 The container image has a preconfigured password and an ssl certificate that is generated on build. 
 The password can easily be changed after starting the container and ssl can be disabled by passing empty variable `-e CERT=""`
