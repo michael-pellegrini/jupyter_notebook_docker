@@ -1,10 +1,10 @@
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/m400/jupyterlab?logo=docker&style=plastic)  ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/m400/jupyterlab?logo=docker&style=plastic)  ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/m400/jupyterlab?logo=docker&style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/m400/jupyterlab?logo=docker&style=plastic)  
 
-## Jupyterlab Docker Image - linux/AMD64
+## Jupyter Notebook Docker Image - linux/AMD64
 
 This container image is intended for a single user on private network.  
 
-The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab.
+The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab. Jupyterlab is the latest edition of Jupyter Notebook.
 
 The container image has a preconfigured password and an ssl certificate that is generated on build. 
 The password can easily be changed after starting the container and ssl can be disabled by passing empty variable `-e CERT=`
