@@ -8,7 +8,7 @@ The container image uses ubuntu as base image with latest versions of miniconda3
 See https://jupyterlab.readthedocs.io/en/stable/
 
 The container image has a preconfigured changeable password (admin) and a ssl certificate that is generated on build. 
-The password can easily be changed after starting the container and ssl can be disabled by passing empty variable `-e CERT=''`
+The password can easily be changed after starting the container and ssl can be disabled by passing empty variable `-e CERT=`
 Additional python packages can be installed with the `conda` command in the jupyterlab terminal.
 
 ```
@@ -18,15 +18,15 @@ VOLUME /root/miniconda3/lib  Volume required to save user installed conda packag
 VOLUME /root/.jupyter        Volume required to change password and save.
 ```
 
-### Docker run command without SSL.
+### Docker run command without HTTPS
 ##### Default password = admin
 
-`docker run -d -p 8888:8888 --name jupyter -e CERT='' -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
+`docker run -d -p 8888:8888 --name jupyter -e CERT= -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
 
 Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin`
 
 
-### Docker run command with SSL (default).
+### Docker run command with HTTPS
 ##### Default password = admin
 
 `docker run -d -p 8888:8888 --name jupyter -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
@@ -57,7 +57,7 @@ services:
   application:
     image: m400/jupyterlab
     environment:                  
-    - CERT=""                      (Comment out this line to enable https)
+    - CERT=                      #(Comment out this line to enable https)
     ports:
     - 8888:8888
     volumes:
