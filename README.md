@@ -4,24 +4,18 @@
 
 This container image is intended for a single user on private network.  
 
-`docker run -d -p 8888:8888 -e CERT='' m400/jupyterlab`  
-point browser to `127.0.0.1:8888` or `ipaddress:8888`  default password `admin` 
-
-Any issues clear cache restart browser or user private window 
-
-
 The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab. Jupyterlab is the latest edition of Jupyter Notebook.
 See https://jupyterlab.readthedocs.io/en/stable/
 
-The container image has a preconfigured password and an ssl certificate that is generated on build. 
-The password can easily be changed after starting the container and ssl can be disabled by passing empty variable `-e CERT=''`
+The container image has a preconfigured changeable password (admin) and a ssl certificate that is generated on build. 
+The password can easily be changed after starting the container and ##### ssl can be disabled by passing empty variable `-e CERT=''`
 Additional python packages can be installed with the `conda` command in the jupyterlab terminal.
 
 ```
 VOLUME /notebooks            Volume is default folder required for saved work to persist (.ipynb files etc..)
 VOLUME /root/miniconda3/pkgs Volume required to save user installed conda packages
-VOLUME /root/miniconda3/lib  Volume also required to save user installed conda packages.
-VOLUME /root/.jupyter        Volume required to save user password change.
+VOLUME /root/miniconda3/lib  Volume required to save user installed conda packages.
+VOLUME /root/.jupyter        Volume required to change password and save.
 ```
 
 ### Docker run command without SSL.
@@ -62,8 +56,8 @@ version: '3.7'
 services:
   application:
     image: m400/jupyterlab
-    #environment:                   (uncomment to disable ssl)
-    #- CERT=""
+    environment:                  
+    - CERT=""                      (Comment out this line to enable https)
     ports:
     - 8888:8888
     volumes:
@@ -71,18 +65,17 @@ services:
     - config:/root/.jupyter
     - pkgs:/root/miniconda3/pkg
     - lib:/root/miniconda3/lib
-    #- miniconda3:/root/miniconda3  (optional) maps entire installation to volume
+
     restart: unless-stopped
 volumes:
   notebooks:
   config:
   pkgs:
   lib:
-  #miniconda3                       (optional)
 ```
-Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
+Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin`
 
-If ssl disabled Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin`
+SSL enabled point browser to  `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
 
 ![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-182901.png)
 ![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-183002.png)
