@@ -2,6 +2,8 @@ version: '3.7'
 services:
   application:
     image: m400/jupyterlab
+    environment:
+    - CERT=""              (comment out this line to enable https)
     ports:
     - 8888:8888
     volumes:
@@ -9,11 +11,11 @@ services:
     - config:/root/.jupyter
     - pkgs:/root/miniconda3/pkg
     - lib:/root/miniconda3/lib
-    #- miniconda3:/root/miniconda3  #optional
+
     restart: unless-stopped
 volumes:
   notebooks:
   config:
   pkgs:
   lib:
-  #miniconda3:
+
