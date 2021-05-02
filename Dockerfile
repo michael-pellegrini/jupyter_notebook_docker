@@ -1,5 +1,5 @@
-FROM ubuntu:20.04
-LABEL maintainer="michaelpellegrinimail@gmail.com"
+FROM ubuntu:20.10
+LABEL maintainer="michaelpellegrini@protonmail.com"
 LABEL version="latest"
 
 ENV PATH /root/miniconda3/bin:$PATH
