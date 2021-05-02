@@ -8,7 +8,7 @@ The container image uses ubuntu as base image with latest versions of miniconda3
 See https://jupyterlab.readthedocs.io/en/stable/
 
 The container image has a preconfigured changeable password (admin) and a ssl certificate that is generated on build. 
-The password can easily be changed after starting the container and ##### ssl can be disabled by passing empty variable `-e CERT=''`
+The password can easily be changed after starting the container and ssl can be disabled by passing empty variable `-e CERT=''`
 Additional python packages can be installed with the `conda` command in the jupyterlab terminal.
 
 ```
