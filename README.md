@@ -4,12 +4,13 @@
 
 This container image is intended for a single user on private network.  
 
-The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab. Jupyterlab is the latest edition of Jupyter Notebook.
+The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab.
 See https://jupyterlab.readthedocs.io/en/stable/
 
 The container image has a preconfigured changeable password (admin) and a ssl certificate that is generated on build. 
-The password can easily be changed after starting the container and ssl can be disabled by passing empty variable `-e CERT=`
-Additional python packages can be installed with the `conda` command in the jupyterlab terminal.
+The password can easily be changed after starting the container and ssl can be disabled by adding empty environmental variable `-e CERT=`
+
+*Additional python packages can be installed with the `conda` command in the jupyterlab terminal.
 
 ```
 VOLUME /notebooks            Volume is default folder required for saved work to persist (.ipynb files etc..)
@@ -18,25 +19,23 @@ VOLUME /root/miniconda3/lib  Volume required to save user installed conda packag
 VOLUME /root/.jupyter        Volume required to change password and save.
 ```
 
-### Docker run command without HTTPS
-##### Default password = admin
-
-`docker run -d -p 8888:8888 --name jupyter -e CERT= -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
-
-Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin`
-
-
-### Docker run command with HTTPS
+### Docker run command for HTTPS
 ##### Default password = admin
 
 `docker run -d -p 8888:8888 --name jupyter -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
 
 Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
 
+### For HTTP add `-e CERT=` to the Docker command. 
+##### Default password = admin
+
+`docker run -d -p 8888:8888 --name jupyter -e CERT= -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
+
+Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin`
+
 ### To change default password
 
-`docker exec -it jupyter bash`  
-`docker exec -it <containerID or Name> bash`
+`docker exec -it <ContainerName> bash`  
 
 ```
 (base) root@4c3a707e0f87:/# jupyter server password
@@ -46,9 +45,8 @@ Verify password:
 (base) root@4c3a707e0f87:/# exit
 ``` 
 
-`docker restart jupyter`
-
-Restart Web browser before logging in, if you logged in with default password.
+`docker restart <ContainerName`
+If you logged in with default password. Restart Web browser before logging in again or clear cache.
 
 ### Docker-compose.yml 
 ```
@@ -56,8 +54,9 @@ version: '3.7'
 services:
   application:
     image: m400/jupyterlab
-    environment:                  
-    - CERT=                      #(Comment out this line to enable https)
+    
+    #environment:                  
+    #- CERT=                      #(Uncomment to enable HTTP)
     ports:
     - 8888:8888
     volumes:
@@ -73,9 +72,6 @@ volumes:
   pkgs:
   lib:
 ```
-Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin`
-
-SSL enabled point browser to  `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
 
 ![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-182901.png)
 ![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-183002.png)
