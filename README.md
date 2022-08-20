@@ -46,7 +46,7 @@ Verify password:
 ``` 
 
 `docker restart <ContainerName`
-If you logged in with default password. Restart Web browser before logging in again or clear cache.
+If you logged in with default password. Restart Web browser before logging in again.
 
 ### Docker-compose.yml 
 ```
