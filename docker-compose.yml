@@ -1,9 +1,9 @@
 version: '3.7'
 services:
   application:
-    image: m400/jupyterlab:latest
-    environment:
-    - CERT=              #comment out this line to enable https
+    image: m400/jupyterlab
+    environment:               #comment out this line to enable https
+    - CERT=                    #comment out this line to enable https
     ports:
     - 8888:8888
     volumes:

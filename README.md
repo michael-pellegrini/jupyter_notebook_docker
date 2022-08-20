@@ -55,8 +55,8 @@ services:
   application:
     image: m400/jupyterlab
     
-    #environment:                  
-    #- CERT=                      #(Uncomment to enable HTTP)
+    environment:                 #Comment out to enable HTTP
+    - CERT=                      #Comment out to enable HTTP
     ports:
     - 8888:8888
     volumes:
