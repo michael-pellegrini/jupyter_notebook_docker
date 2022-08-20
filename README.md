@@ -19,15 +19,15 @@ VOLUME /root/miniconda3/lib  Volume required to save user installed conda packag
 VOLUME /root/.jupyter        Volume required to change password and save.
 ```
 
-### Docker run command for HTTPS
-##### Default password = admin
+## Docker run command for HTTPS
+#### Default password = admin
 
 `docker run -d -p 8888:8888 --name jupyter -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
 
 Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
 
-### For HTTP add `-e CERT=` to the Docker command. 
-##### Default password = admin
+## Docker run command for HTTP 
+#### Default password = admin
 
 `docker run -d -p 8888:8888 --name jupyter -e CERT= -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
 
