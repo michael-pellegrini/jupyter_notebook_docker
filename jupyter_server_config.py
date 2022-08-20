@@ -391,7 +391,7 @@
 #                        The string should be of the form type:salt:hashed-
 #  password.
 #  Default: ''
-# c.ServerApp.password = 'sha1:325afe11c637:5d8cbb197105f27a1ede35eaa84456e672947b89'
+c.ServerApp.password = 'sha1:325afe11c637:5d8cbb197105f27a1ede35eaa84456e672947b89'
 
 ## Forces users to use a password for the Jupyter server.
 #                        This is useful in a multi user environment, for instance when
