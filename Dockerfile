@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:kinetic
 LABEL maintainer="michaelpellegrini@protonmail.com"
 LABEL version="latest"
 
