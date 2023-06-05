@@ -25,6 +25,7 @@ VOLUME /root/.jupyter        Volume required to change password and save.
 `docker run -d -p 8888:8888 --name jupyter -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
 
 Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
+
 Typing `https://` is requried.
 
 ## Docker run command for HTTP 
