@@ -7,15 +7,15 @@ services:
     ports:
     - 8888:8888
     volumes:
-    - notebooks:/notebooks
+    - notebooks1:/notebooks
     - config:/root/.jupyter
-    - pkgs:/root/miniconda3/pkg
-    - lib:/root/miniconda3/lib
+    - pkgs1:/root/miniconda3/pkg
+    - lib1:/root/miniconda3/lib
 
     restart: unless-stopped
 volumes:
-  notebooks:
+  notebooks1:
   config:
-  pkgs:
-  lib:
+  pkgs1:
+  lib1:
 
