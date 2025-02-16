@@ -2,7 +2,7 @@
 
 ## Jupyter Notebook Docker Image - linux/AMD64
 
-This container image is intended for a single user on private network.  
+The container image is intended for a single user on a private network.  
 
 The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab.
 See https://jupyterlab.readthedocs.io/en/stable/
