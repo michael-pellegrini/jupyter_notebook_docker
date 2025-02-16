@@ -75,6 +75,3 @@ volumes:
   lib:
 ```
 
-![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-182901.png)
-![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-183002.png)
-![screenshot](https://raw.githubusercontent.com/hm400/assets/main/ksnip_20210105-183821.png)
