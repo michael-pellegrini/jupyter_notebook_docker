@@ -4,7 +4,7 @@
 
 The container image is intended for a single user on a private network.  
 
-The container image uses ubuntu as base image with latest versions of miniconda3 and jupyterlab.
+The container image uses ubuntu base image with latest versions of miniconda3 and jupyterlab.
 See https://jupyterlab.readthedocs.io/en/stable/
 
 The container image has a preconfigured changeable password (admin) and a ssl certificate that is generated on build. 
@@ -20,20 +20,22 @@ VOLUME /root/.jupyter        Volume required to change password and save.
 ```
 
 ## Docker run command for HTTPS
-#### Default password = admin
 
-`docker run -d -p 8888:8888 --name jupyter -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
+`docker run -d -p 8888:8888 --name jupyter -v notebooks1:/notebooks -v config:/root/.jupyter -v lib1:/root/miniconda3/lib -v pkgs1:/root/miniconda3/pkgs m400/jupyterlab`
 
 Point web browser to `https://127.0.0.1:8888`  or `https://your_IP:8888`   Default password `admin`
 
 Typing `https://` is requried.
-
-## Docker run command for HTTP 
 #### Default password = admin
 
-`docker run -d -p 8888:8888 --name jupyter -e CERT= -v notebooks:/notebooks -v config:/root/.jupyter -v lib:/root/miniconda3/lib -v pkgs:/root/miniconda3/pkgs m400/jupyterlab`
+## Docker run command for HTTP 
+
+`docker run -d -p 8888:8888 --name jupyter -e CERT= -v notebooks1:/notebooks -v config:/root/.jupyter -v lib1:/root/miniconda3/lib -v pkgs1:/root/miniconda3/pkgs m400/jupyterlab`
 
 Point web browser to `http://127.0.0.1:8888`  or `http://your_IP:8888`   Default password `admin`
+
+Typing `http://` is required
+#### Default password = admin
 
 ### To change default password
 
@@ -62,16 +64,16 @@ services:
     ports:
     - 8888:8888
     volumes:
-    - notebooks:/notebooks
+    - notebooks1:/notebooks
     - config:/root/.jupyter
-    - pkgs:/root/miniconda3/pkg
-    - lib:/root/miniconda3/lib
+    - pkgs1:/root/miniconda3/pkg
+    - lib1:/root/miniconda3/lib
 
     restart: unless-stopped
 volumes:
-  notebooks:
+  notebooks1:
   config:
-  pkgs:
-  lib:
+  pkgs1:
+  lib1:
 ```
 
